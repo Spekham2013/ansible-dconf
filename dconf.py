@@ -40,7 +40,7 @@ def _run_cmd_with_dbus(user, cmd):
     if user is None:
         return _check_output_strip(['/bin/sh', '-c', " ".join(command)])
 
-    return _check_output_strip(['su', '-', user , '-c', " ".join(command)])
+    return _check_output_strip(['runuser', '-l', user, '-c', " ".join(command)])
 
 def _set_value(user, key, value):
     return _run_cmd_with_dbus(
